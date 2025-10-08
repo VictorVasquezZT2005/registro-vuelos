@@ -5,21 +5,30 @@
 @section('content')
 <div class="container py-4">
 
-    <h1 class="mb-4">Bienvenido al Sistema de Registro de Vuelos</h1>
+    <!-- Bienvenida -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Bienvenido, {{ auth()->user()->name }}!</h1>
+        <!-- Botón de cerrar sesión -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-outline-danger">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+            </button>
+        </form>
+    </div>
 
+    <!-- Tarjetas de conteo -->
     <div class="row g-4">
         <!-- Clientes -->
         <div class="col-md-4">
             <div class="card text-white bg-primary h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="card-title"><i class="fas fa-users"></i> Clientes</h5>
-                            <p class="card-text fs-4">{{ \App\Models\Cliente::count() }}</p>
-                        </div>
-                        <div>
-                            <a href="{{ route('clientes.index') }}" class="btn btn-light btn-sm">Ver</a>
-                        </div>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title"><i class="fas fa-users"></i> Clientes</h5>
+                        <p class="card-text fs-4">{{ \App\Models\Cliente::count() }}</p>
+                    </div>
+                    <div>
+                        <a href="{{ route('clientes.index') }}" class="btn btn-light btn-sm">Ver</a>
                     </div>
                 </div>
             </div>
@@ -28,15 +37,13 @@
         <!-- Vuelos -->
         <div class="col-md-4">
             <div class="card text-white bg-success h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="card-title"><i class="fas fa-plane"></i> Vuelos</h5>
-                            <p class="card-text fs-4">{{ \App\Models\Vuelo::count() }}</p>
-                        </div>
-                        <div>
-                            <a href="{{ route('vuelos.index') }}" class="btn btn-light btn-sm">Ver</a>
-                        </div>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title"><i class="fas fa-plane"></i> Vuelos</h5>
+                        <p class="card-text fs-4">{{ \App\Models\Vuelo::count() }}</p>
+                    </div>
+                    <div>
+                        <a href="{{ route('vuelos.index') }}" class="btn btn-light btn-sm">Ver</a>
                     </div>
                 </div>
             </div>
@@ -45,15 +52,13 @@
         <!-- Reservaciones -->
         <div class="col-md-4">
             <div class="card text-white bg-warning h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="card-title"><i class="fas fa-ticket-alt"></i> Reservaciones</h5>
-                            <p class="card-text fs-4">{{ \App\Models\Reservacion::count() }}</p>
-                        </div>
-                        <div>
-                            <a href="{{ route('reservaciones.index') }}" class="btn btn-light btn-sm">Ver</a>
-                        </div>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title"><i class="fas fa-ticket-alt"></i> Reservaciones</h5>
+                        <p class="card-text fs-4">{{ \App\Models\Reservacion::count() }}</p>
+                    </div>
+                    <div>
+                        <a href="{{ route('reservaciones.index') }}" class="btn btn-light btn-sm">Ver</a>
                     </div>
                 </div>
             </div>

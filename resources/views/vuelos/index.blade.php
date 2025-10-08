@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between mb-3">
     <h1>Vuelos</h1>
-    <a href="{{ route('vuelos.create') }}" class="btn btn-primary">Nuevo vuelo</a>
+    <a href="{{ route('vuelos.create') }}" class="btn btn-primary align-self-center">Nuevo vuelo</a>
 </div>
 
 <table class="table table-striped">
