@@ -24,6 +24,7 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:150',
             'correo' => 'required|email|unique:clientes,correo',
             'telefono' => 'nullable|string|max:30',
+            'password' => 'nullable|string|max:255', // <-- agregado
         ]);
 
         Cliente::create($data);
@@ -45,9 +46,9 @@ class ClienteController extends Controller
     {
         $data = $request->validate([
             'nombre' => 'required|string|max:150',
-            // ignorar el propio correo al validar unicidad
             'correo' => 'required|email|unique:clientes,correo,' . $cliente->id,
             'telefono' => 'nullable|string|max:30',
+            'password' => 'nullable|string|max:255', // <-- agregado
         ]);
 
         $cliente->update($data);

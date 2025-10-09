@@ -9,6 +9,7 @@
     <li class="list-group-item"><strong>Nombre:</strong> {{ $cliente->nombre }}</li>
     <li class="list-group-item"><strong>Correo:</strong> {{ $cliente->correo }}</li>
     <li class="list-group-item"><strong>Teléfono:</strong> {{ $cliente->telefono }}</li>
+    <li class="list-group-item"><strong>Contraseña:</strong> {{ $cliente->password }}</li> <!-- agregado -->
     <li class="list-group-item"><small>Creado: {{ $cliente->created_at }}</small></li>
 </ul>
 

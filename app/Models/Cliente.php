@@ -13,5 +13,6 @@ class Cliente extends Model
         'nombre',
         'correo',
         'telefono',
+        'password', // <-- campo editable por el admin
     ];
 }

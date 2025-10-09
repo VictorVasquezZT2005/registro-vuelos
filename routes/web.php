@@ -5,7 +5,6 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\VueloController;
 use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PublicController;
 
 // --------------------------
 // Rutas de autenticación

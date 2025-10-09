@@ -15,6 +15,7 @@
             <th>Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>
+            <th>Contraseña</th> <!-- agregado -->
             <th>Acciones</th>
         </tr>
     </thead>
@@ -25,6 +26,7 @@
             <td>{{ $c->nombre }}</td>
             <td>{{ $c->correo }}</td>
             <td>{{ $c->telefono }}</td>
+            <td>{{ $c->password }}</td> <!-- agregado -->
             <td>
                 <a href="{{ route('clientes.show', $c) }}" class="btn btn-sm btn-info">Ver</a>
                 <a href="{{ route('clientes.edit', $c) }}" class="btn btn-sm btn-warning">Editar</a>
