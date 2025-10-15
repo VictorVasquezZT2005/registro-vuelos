@@ -26,5 +26,6 @@ Route::middleware('auth')->group(function () {
     // CRUD protegidos
     Route::resource('clientes', ClienteController::class);
     Route::resource('vuelos', VueloController::class);
-    Route::resource('reservaciones', ReservacionController::class);
+Route::resource('reservaciones', ReservacionController::class)
+    ->parameters(['reservaciones' => 'reservacion']);
 });

@@ -9,13 +9,18 @@ class Reservacion extends Model
 {
     use HasFactory;
 
-    protected $table = 'reservaciones'; // <--- Asegúrate que coincide con tu tabla en MySQL
+    protected $table = 'reservaciones';
 
     protected $fillable = [
         'cliente_id',
         'vuelo_id',
         'fecha_reserva',
         'asientos',
+    ];
+
+    // Convertimos fecha_reserva a Carbon automáticamente
+    protected $casts = [
+        'fecha_reserva' => 'datetime',
     ];
 
     public function cliente()
