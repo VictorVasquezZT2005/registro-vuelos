@@ -33,10 +33,34 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Asientos</label>
+    <label class="form-label">Cantidad de Asientos</label>
     <input type="number" name="asientos" value="{{ old('asientos', $reservacion->asientos ?? 1) }}" min="1" class="form-control @error('asientos') is-invalid @enderror">
     @error('asientos') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+<div class="mb-3">
+    <label class="form-label">Números de Asiento</label>
+    <input type="text" name="numeros_asiento" value="{{ old('numeros_asiento', (isset($reservacion) && is_array($reservacion->numeros_asiento)) ? implode(', ', $reservacion->numeros_asiento) : ($reservacion->numeros_asiento ?? '')) }}" class="form-control @error('numeros_asiento') is-invalid @enderror">
+    <div class="form-text">Separar con comas (ej: 1A, 2B, 3C)</div>
+    @error('numeros_asiento') <div class="invalid-feedback">{{ $message }}</div> @enderror
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="form-label">Método de Pago</label>
+        <select name="metodo_pago" class="form-select @error('metodo_pago') is-invalid @enderror">
+            <option value="">Seleccione un método</option>
+            <option value="tarjeta" {{ old('metodo_pago', $reservacion->metodo_pago ?? '') == 'tarjeta' ? 'selected' : '' }}>Tarjeta</option>
+            <option value="paypal" {{ old('metodo_pago', $reservacion->metodo_pago ?? '') == 'paypal' ? 'selected' : '' }}>PayPal</option>
+        </select>
+        @error('metodo_pago') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="form-label">Email de PayPal</label>
+        <input type="email" name="paypal_email" value="{{ old('paypal_email', $reservacion->paypal_email ?? '') }}" class="form-control @error('paypal_email') is-invalid @enderror" placeholder="Requerido si paga con PayPal">
+        @error('paypal_email') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    </div>
+</div>
 <button class="btn btn-primary" type="submit">{{ $buttonText ?? 'Guardar' }}</button>
 <a href="{{ route('reservaciones.index') }}" class="btn btn-secondary">Cancelar</a>

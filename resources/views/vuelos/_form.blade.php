@@ -34,11 +34,19 @@
     </div>
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Precio ($)</label>
-    <input type="number" name="precio" step="0.01" value="{{ old('precio', $vuelo->precio ?? '') }}" class="form-control @error('precio') is-invalid @enderror">
-    @error('precio') <div class="invalid-feedback">{{ $message }}</div> @enderror
-</div>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="form-label">Precio ($)</label>
+        <input type="number" name="precio" step="0.01" value="{{ old('precio', $vuelo->precio ?? '') }}" class="form-control @error('precio') is-invalid @enderror">
+        @error('precio') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="form-label">Asientos Disponibles</label>
+        <input type="number" name="asientos_disponibles" value="{{ old('asientos_disponibles', $vuelo->asientos_disponibles ?? '100') }}" class="form-control @error('asientos_disponibles') is-invalid @enderror">
+        @error('asientos_disponibles') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    </div>
+    </div>
 
 <button class="btn btn-primary" type="submit">{{ $buttonText ?? 'Guardar' }}</button>
 <a href="{{ route('vuelos.index') }}" class="btn btn-secondary">Cancelar</a>

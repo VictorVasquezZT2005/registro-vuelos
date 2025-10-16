@@ -17,7 +17,7 @@
             <th>Salida</th>
             <th>Llegada</th>
             <th>Precio</th>
-            <th>Acciones</th>
+            <th>Disponibles</th> <th>Ocupados</th>   <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
             <td>{{ $v->fecha_salida }}</td>
             <td>{{ $v->fecha_llegada }}</td>
             <td>${{ number_format($v->precio, 2) }}</td>
-            <td>
+            <td>{{ $v->asientos_disponibles }}</td> <td>{{ $v->asientos_ocupados }}</td>   <td>
                 <a href="{{ route('vuelos.show', $v) }}" class="btn btn-sm btn-info">Ver</a>
                 <a href="{{ route('vuelos.edit', $v) }}" class="btn btn-sm btn-warning">Editar</a>
                 <form action="{{ route('vuelos.destroy', $v) }}" method="POST" style="display:inline-block" onsubmit="return confirm('¿Eliminar vuelo?')">

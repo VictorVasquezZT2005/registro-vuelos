@@ -15,7 +15,7 @@
             <th>Vuelo</th>
             <th>Fecha de reserva</th>
             <th>Asientos</th>
-            <th>Acciones</th>
+            <th>Método de Pago</th> <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
             </td>
             <td>{{ \Carbon\Carbon::parse($r->fecha_reserva)->format('d/m/Y H:i') }}</td>
             <td>{{ $r->asientos }}</td>
-            <td>
+            <td>{{ $r->metodo_pago ?? 'N/A' }}</td> <td>
                 <a href="{{ route('reservaciones.show', $r->id) }}" class="btn btn-sm btn-info">Ver</a>
                 <a href="{{ route('reservaciones.edit', $r->id) }}" class="btn btn-sm btn-warning">Editar</a>
                 <form action="{{ route('reservaciones.destroy', $r->id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('¿Eliminar reservación?')">

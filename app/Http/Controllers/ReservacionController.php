@@ -29,7 +29,17 @@ class ReservacionController extends Controller
             'vuelo_id' => 'required|exists:vuelos,id',
             'fecha_reserva' => 'required|date',
             'asientos' => 'required|integer|min:1',
+            'metodo_pago' => 'nullable|string|max:50', // <--- Añadido
+            'paypal_email' => 'nullable|email|max:255|required_if:metodo_pago,paypal', // <--- Añadido
+            'numeros_asiento' => 'nullable|string', // <--- Añadido
         ]);
+
+        // Transformar string de asientos a array
+        if (!empty($data['numeros_asiento'])) {
+            $data['numeros_asiento'] = array_map('trim', explode(',', $data['numeros_asiento']));
+        } else {
+            $data['numeros_asiento'] = null;
+        }
 
         Reservacion::create($data);
 
@@ -56,7 +66,17 @@ class ReservacionController extends Controller
             'vuelo_id' => 'required|exists:vuelos,id',
             'fecha_reserva' => 'required|date',
             'asientos' => 'required|integer|min:1',
+            'metodo_pago' => 'nullable|string|max:50', // <--- Añadido
+            'paypal_email' => 'nullable|email|max:255|required_if:metodo_pago,paypal', // <--- Añadido
+            'numeros_asiento' => 'nullable|string', // <--- Añadido
         ]);
+
+        // Transformar string de asientos a array
+        if (!empty($data['numeros_asiento'])) {
+            $data['numeros_asiento'] = array_map('trim', explode(',', $data['numeros_asiento']));
+        } else {
+            $data['numeros_asiento'] = null;
+        }
 
         $reservacion->update($data);
 

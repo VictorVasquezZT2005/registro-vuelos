@@ -21,8 +21,21 @@
         <strong>Fecha de reserva:</strong> {{ $reservacion->fecha_reserva ? $reservacion->fecha_reserva->format('d/m/Y H:i') : 'No disponible' }}
     </li>
     <li class="list-group-item">
-        <strong>Asientos:</strong> {{ $reservacion->asientos ?? 'No disponible' }}
+        <strong>Cantidad de Asientos:</strong> {{ $reservacion->asientos ?? 'No disponible' }}
     </li>
+
+    <li class="list-group-item">
+        <strong>Números de Asiento:</strong> 
+        {{ (is_array($reservacion->numeros_asiento) && !empty($reservacion->numeros_asiento)) ? implode(', ', $reservacion->numeros_asiento) : 'No especificados' }}
+    </li>
+    <li class="list-group-item">
+        <strong>Método de Pago:</strong> {{ $reservacion->metodo_pago ?? 'No especificado' }}
+    </li>
+    @if($reservacion->metodo_pago == 'paypal')
+    <li class="list-group-item">
+        <strong>Email PayPal:</strong> {{ $reservacion->paypal_email ?? 'No especificado' }}
+    </li>
+    @endif
     <li class="list-group-item">
         <small>Creado: {{ $reservacion->created_at ? $reservacion->created_at->format('d/m/Y H:i') : 'No disponible' }}</small>
     </li>

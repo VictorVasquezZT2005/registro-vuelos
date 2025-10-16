@@ -27,6 +27,7 @@ class VueloController extends Controller
             'fecha_salida' => 'required|date',
             'fecha_llegada' => 'required|date|after:fecha_salida',
             'precio' => 'required|numeric|min:0',
+            'asientos_disponibles' => 'required|integer|min:0', // <--- Añadido
         ]);
 
         Vuelo::create($data);
@@ -53,6 +54,7 @@ class VueloController extends Controller
             'fecha_salida' => 'required|date',
             'fecha_llegada' => 'required|date|after:fecha_salida',
             'precio' => 'required|numeric|min:0',
+            'asientos_disponibles' => 'required|integer|min:0', // <--- Añadido
         ]);
 
         $vuelo->update($data);

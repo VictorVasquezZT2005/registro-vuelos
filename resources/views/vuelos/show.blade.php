@@ -11,7 +11,7 @@
     <li class="list-group-item"><strong>Salida:</strong> {{ $vuelo->fecha_salida }}</li>
     <li class="list-group-item"><strong>Llegada:</strong> {{ $vuelo->fecha_llegada }}</li>
     <li class="list-group-item"><strong>Precio:</strong> ${{ number_format($vuelo->precio, 2) }}</li>
-</ul>
+    <li class="list-group-item"><strong>Asientos Disponibles:</strong> {{ $vuelo->asientos_disponibles }}</li> <li class="list-group-item"><strong>Asientos Ocupados:</strong> {{ $vuelo->asientos_ocupados }}</li>   </ul>
 
 <a href="{{ route('vuelos.edit', $vuelo) }}" class="btn btn-warning">Editar</a>
 <a href="{{ route('vuelos.index') }}" class="btn btn-secondary">Volver</a>

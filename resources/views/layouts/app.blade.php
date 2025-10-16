@@ -35,12 +35,23 @@
         .alert {
             margin-top: 15px;
         }
+        /* Estilo para que el botón de logout se vea como un link */
+        .btn-link-nav {
+            color: rgba(255,255,255,.55);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+        }
+        .btn-link-nav:hover {
+            color: rgba(255,255,255,.75);
+        }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">
             <i class="fas fa-plane-departure"></i> Sistema de Vuelos
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
@@ -49,9 +60,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('vuelos.index') }}">Vuelos</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('reservaciones.index') }}">Reservaciones</a></li>
+                @auth
+                    <li class="nav-item"><a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('vuelos.index') }}">Vuelos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('reservaciones.index') }}">Reservaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">Usuarios</a></li>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>

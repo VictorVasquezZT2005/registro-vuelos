@@ -5,6 +5,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\VueloController;
 use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController; // ---> AÑADIDO <---
 
 // --------------------------
 // Rutas de autenticación
@@ -26,6 +27,8 @@ Route::middleware('auth')->group(function () {
     // CRUD protegidos
     Route::resource('clientes', ClienteController::class);
     Route::resource('vuelos', VueloController::class);
-Route::resource('reservaciones', ReservacionController::class)
+    Route::resource('reservaciones', ReservacionController::class)
     ->parameters(['reservaciones' => 'reservacion']);
+    
+    Route::resource('users', UserController::class); // ---> AÑADIDO <---
 });
