@@ -62,5 +62,9 @@
         @error('paypal_email') <div class="invalid-feedback">{{ $message }}</div> @enderror
     </div>
 </div>
-<button class="btn btn-primary" type="submit">{{ $buttonText ?? 'Guardar' }}</button>
-<a href="{{ route('reservaciones.index') }}" class="btn btn-secondary">Cancelar</a>
+
+{{-- Botones con margen superior e inferior para separar del footer --}}
+<div class="mt-4 mb-5 d-flex gap-2">
+    <button class="btn btn-primary" type="submit">{{ $buttonText ?? 'Guardar' }}</button>
+    <a href="{{ route('reservaciones.index') }}" class="btn btn-secondary">Cancelar</a>
+</div>
